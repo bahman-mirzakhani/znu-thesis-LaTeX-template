@@ -1,0 +1,118 @@
+% !TeX root = ../thesis.tex
+\chapter{مواد و روش‌ها}
+\section{شکل}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.3\linewidth]{example-image}
+	\caption{توضیحات شکل}
+	\label{fig:test}
+\end{figure}
+
+\subsection{چند شکل در کنار هم}
+\begin{figure}[!htb]
+	\centering
+	\begin{subfigure}{.2\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{example-image-a}
+		\caption{}
+		\label{subfig:exam1}
+	\end{subfigure}
+	\hspace{0.5cm}
+	\begin{subfigure}{.2\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{example-image-b}
+		\caption{}
+		\label{subfig:exam2}
+	\end{subfigure}\\
+	\begin{subfigure}{.2\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{example-image-c}
+		\caption{}
+		\label{subfig:exam3}
+	\end{subfigure}
+	\caption[توضیحات کلی]{توضیحات کلی.
+		\subref{subfig:exam1})
+		توضیحات اول،
+		\subref{subfig:exam2})
+		توضیحات دوم،
+		\subref{subfig:exam3})
+		توضیحات سوم}
+	\label{fig:subfig}
+\end{figure}
+
+\section{جدول}
+\begin{table}[!htb]
+	\centering
+	\caption{نمونه جدول}
+	\label{tab:test}
+	\begin{tabular}{ccc}
+		\toprule
+		نام & نام‌خانوادگی & کدملی
+		\\\midrule
+		اول & دوم & 1234567890
+		\\
+		سوم & چهارم & 0987654321
+		\\
+		پنجم & ششم & 5432106789
+		\\\bottomrule
+	\end{tabular}
+\end{table}
+
+\subsection{ادغام ستون‌ها}
+\begin{table}[!htb]
+	\centering
+	\caption{ادغام ستون‌ها}
+	\label{tab:mergeCol}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\multicolumn{2}{|c|}{\RL{نام و نام‌خانوادگی}}
+		& کدملی
+		\\\hline
+		اول & دوم & 1234567890
+		\\
+		سوم & چهارم & 0987654321
+		\\
+		پنجم & ششم & 5432106789
+		\\\hline
+	\end{tabular}
+\end{table}
+
+\subsection{ادغام سطرها}
+\begin{table}[!htb]
+	\centering
+	\caption{ادغام سطرها}
+	\label{tab:newTest}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		نام & نام‌خانوادگی & کدملی
+		\\\hline
+		اول & دوم & 1234567890
+		\\\hline
+		سوم & چهارم &
+		\multirow{2}{*}{0987654321}
+		\\\cline{1-2}
+		پنجم & ششم & 
+		\\\hline
+	\end{tabular}
+\end{table}
+
+\section{روابط ریاضی}
+برای آشنایی با انواع محیط‌های ریاضی و کاربردشان، از راهنمای بستهٔ
+\texttt{amsmath}
+استفاده کنید. کافیست در پنجرهٔ
+\lr{Command Prompt}
+(یا همان
+\lr{cmd})،
+فرمانِ
+\lr{texdoc amsmath}
+صادر گردد.
+
+\begin{description}
+	\item[توجه:]
+	توابع و برخی حروف ریاضی مانند عدد نپر، عملگر دیفرانسیل و یکّهٔ موهومی و \ldots،
+	بایستی ایستاده حروف‌چینی شوند. برای مثال:
+	\[
+	\E^{\I \theta} = \cos \theta + \I \sin \theta, \quad
+	F(x) = \int f(x) \diff x
+	\]
+\end{description}

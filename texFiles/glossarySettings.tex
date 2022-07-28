@@ -1,0 +1,140 @@
+% !TeX root = ../thesis.tex
+% www.parsilatex.com/wiki/راهنمای_ایجاد_واژه%E2%80%8Cنامه
+%====================================================
+% تعیین استایل برای واژه‌نامهٔ فارسی به انگلیسی:
+\newglossarystyle{myFaToEn}{%
+	\renewenvironment{theglossary}{}{}%
+%	\renewcommand*{\glsgroupskip}{\vskip 5mm}%
+	\renewcommand*{\glsgroupheading}[1]{%
+		\subsection*{\glsgetgrouptitle{##1}}%
+	}%
+	\renewcommand*{\glossentry}[2]{%
+		\noindent\glsentryname{##1}\space\dotfill\space\glsentrytext{##1}\par		
+	}%
+}
+%====================================================
+% تعیین استایل برای واژه‌نامهٔ انگلیسی به فارسی:
+\newglossarystyle{myEntoFa}{%
+	\renewenvironment{theglossary}{}{}%
+%	\renewcommand*{\glsgroupskip}{\vskip 5mm}%
+	\renewcommand*{\glsgroupheading}[1]{%
+		\begin{LTR}
+			\subsection*{\glsgetgrouptitle{\lr{##1}}}
+		\end{LTR}%
+	}%
+	\renewcommand*{\glossentry}[2]{%
+		\noindent\glsentrytext{##1}\space\dotfill\space\glsentryname{##1}\par		
+	}%
+}
+%====================================================
+% تعیین استایل برای فهرست اختصارات:
+\renewcommand*{\acronymname}{فهرست اختصارات}
+\newglossarystyle{myAbbrlist}{%
+	\renewenvironment{theglossary}{}{}%
+	\renewcommand*{\glsgroupskip}{\vskip 5mm}%
+	\renewcommand*{\glsgroupheading}[1]{%
+		\begin{LTR}
+			\subsection*{\glsgetgrouptitle{\lr{##1}}}
+		\end{LTR}%
+	}%
+%====================================================
+% نحوهٔ نمایش اختصارات؛ کوچک، سمت چپ و بزرگ، سمت راست:
+	\renewcommand*{\glossentry}[2]{%
+		\latin\noindent\glsentrytext{##1}\space\dotfill\space\Glsentrylong{##1}\par
+	}%
+}
+%====================================================
+% در اینجا عباراتی مثل glg، gls، glo و… پسوند فایل‌هایی است که برای xindy به کار می‌روند. 
+\newcommand*{\enFaGlossName}{واژه‌نامهٔ انگلیسی به فارسی}
+\newcommand*{\faEnGlossName}{واژه‌نامهٔ فارسی به انگلیسی}
+\newglossary[glg]{english}{gls}{glo}{\enFaGlossName}
+\newglossary[blg]{persian}{bls}{blo}{\faEnGlossName}
+\makeglossaries
+\glsdisablehyper
+%====================================================
+% تعاریف مربوط به تولید واژه‌نامه و فهرست اختصارات:
+\NewCommandCopy{\oldgls}{\gls}
+\NewCommandCopy{\oldglspl}{\glspl}
+
+\makeatletter
+\renewrobustcmd*{\gls}{\@ifstar{\@msgls}{\@mgls}}
+\newcommand*{\@mgls}[1]{%
+	\ifthenelse % {test}{then clause}{else clause}
+	{\equal{\glsentrytype{#1}}{english}}%
+	{\oldgls{#1}\glsuseri{f-#1}}%
+	{\lr{\oldgls{#1}}}%
+}
+\newcommand*{\@msgls}[1]{%
+	\ifthenelse % {test}{then clause}{else clause}
+	{\equal{\glsentrytype{#1}}{english}}%
+	{\glstext{#1}\glsuseri{f-#1}}%
+	{\lr{\glsentryname{#1}}}%
+}
+\renewrobustcmd*{\glspl}{\@ifstar{\@msglspl}{\@mglspl}}
+\newcommand*{\@mglspl}[1]{%
+	\ifthenelse % {test}{then clause}{else clause}
+	{\equal{\glsentrytype{#1}}{english}}%
+	{\oldglspl{#1}\glsuseri{f-#1}}%
+	{\oldglspl{#1}}%
+}
+\newcommand*{\@msglspl}[1]{%
+	\ifthenelse % {test}{then clause}{else clause}
+	{\equal{\glsentrytype{#1}}{english}}%
+	{\glsplural{#1}\glsuseri{f-#1}}%
+	{\glsentryplural{#1}}%
+}
+\makeatother
+
+\newcommand{\newword}[4]{%
+	\newglossaryentry{#1}{%
+		type={english},%
+		name={\lr{#2}},%
+		plural={#4},%
+		text={#3},%
+		description={}%
+	}%
+	\newglossaryentry{f-#1}{%
+		type={persian},%
+		name={#3},%
+		text={\lr{#2}},%
+		description={}%
+	}%
+}
+%====================================================
+% طبق این دستور، در اولین باری که واژهٔ مورد نظر از واژه‌نامه وارد شود، پاورقی زده می‌شود. 
+\defglsentryfmt[english]{%
+	\glsgenentryfmt\ifglsused{\glslabel}{}{%
+		\LTRfootnote{\glsentryname{\glslabel}}%
+	}%
+}
+%====================================================
+% طبق این دستور، در اولین باری که واژهٔ مورد نظر از فهرست اختصارات وارد شود، پاورقی زده می‌شود. 
+\defglsentryfmt[acronym]{%
+	\ifglsused{\glslabel}{}{%
+		\rl{\LTRfootnote{\glsentrydesc{\glslabel}}}%
+	}%
+	\glsentryname{\glslabel}%
+}
+%====================================================
+% دستور برای قراردادن فهرست اختصارات:
+\newcommand{\printabbreviation}{%
+	{\clearpage
+		\setstretch{1}%
+		\setglossarystyle{myAbbrlist}%
+		\Oldprintglossary[type=acronym]%
+	}%
+}
+%====================================================
+% دستور برای قراردادن واژه‌نامه‌ها:
+\NewCommandCopy{\Oldprintglossary}{\printglossary}
+\renewcommand{\printglossary}{%
+	\twocolumn
+	{\setstretch{1}%
+		\setglossarystyle{myFaToEn}%
+		\Oldprintglossary[type=persian]%
+		\setglossarystyle{myEntoFa}%
+		\Oldprintglossary[type=english]%
+	}%
+	\onecolumn
+}%
+%====================================================
