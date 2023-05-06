@@ -1,0 +1,15 @@
+دستور مورد نیاز برای اجرای فهرست اختصارات و واژه‌نامه‌ها:
+
+xindy -L persian-variant1 -C utf8 -I xindy -M %.xdy -t %.glg -o %.gls %.glo | xindy -L persian-variant1 -C utf8 -I xindy -M %.xdy -t %.blg -o %.bls %.blo | xindy -L english -C utf8 -I xindy -M %.xdy -t %.alg -o %.acr %.acn
+
+
+
+دستور مورد نیاز برای اجرای نمایه:
+
+xindy -L persian-variant2 -C utf8 -M numeric-sort -M latex -M latex-loc-fmts -M texindy -M page-ranges %.idx
+
+
+
+دستور مورد نیاز برای اجرای منابع:
+
+bibtex8 -W -c cp1256fa %.aux

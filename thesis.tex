@@ -1,0 +1,112 @@
+% E-mail: bmirzakhani.en@gmail.com
+% Telegram: https://t.me/Bahman_Mirzakhani
+% Version: 1.8b (Release Woman, Life, Freedom)
+
+% اگر مقطع دکتری هستید، آپشن msc را  غیرفعال کنید.
+% اگر مقطع کارشناسی هستید، آپشن msc را  پاک کنید و bsc بنویسید.
+% اگر آپشن digitFa فعال باشد، اعداد در محیط ریاضی، فارسی خواهند شد.
+% اگر قصد استفاده از نمایه دارید، آپشن idx را فعال کنید.
+% اگر قصد استفاده از فهرست اختصارات دارید، آپشن acr را فعال کنید.
+% اگر قصد استفاده از واژه‌نامه دارید، آپشن dict را فعال کنید.
+% اگر قصد استفاده از فهرست علائم دارید، آپشن smbl را فعال کنید.
+% اگر روش ارجاع‌دهی به‌صورت عددی است، آپشن refNumber را فعال کنید.
+% اگر پایان‌نامه، آمادهٔ تحویل به کتابخانه است، آپشن Final را فعال کنید.
+\documentclass[%
+	msc,% msc or bsc
+	digitFa,%
+%	idx,%
+%	acr,%
+%	dict,%
+%	smbl,%
+	refNumber,%
+%	Final,%
+]{./texFiles/znuThesis}
+% ===========================================================
+% بسته‌ها و دستورات:
+\input{./texFiles/Commands}
+% ===========================================================
+% واژه‌های اختصار:
+\ifznuUseAcronyms
+	\input{./texFiles/Acronyms}
+\fi
+% ===========================================================
+% واژه‌های واژه‌نامه:
+\ifznuUseDicts
+	\input{./texFiles/Dicts}
+\fi
+% ===========================================================
+\begin{document}
+% ===========================================================
+% مشخصات دانشجو، اساتید و پایان‌نامه:
+	\input{./texFiles/Info}
+% ===========================================================
+% تقدیمی و سپاسگزاری:
+	\input{./texFiles/Acknowledgment}
+	\clearpage
+% ===========================================================
+% چکیدهٔ فارسی:
+	\input{./texFiles/abstractFa}
+	\clearpage
+% ===========================================================
+% فهرست‌ها:
+	\setTOC
+	\tableofcontents\clearpage % فهرست مطالب
+	\listoftables\clearpage % فهرست جدول‌ها
+	\listoffigures\clearpage % فهرست شکل‌ها
+	\listofdiags\clearpage % فهرست نمودارها
+	\listofalgorithms\clearpage % فهرست الگوریتم‌ها
+	\listofcodes\clearpage % فهرست کدها
+	\listofmyequations\clearpage % فهرست روابط ریاضی
+% ===========================================================
+% فهرست اختصارات:
+	\ifznuUseAcronyms
+		\printabbreviation
+	\fi
+% ===========================================================
+% فهرست علائم:
+	\ifznuUseSymb
+		\input{./texFiles/Symbols}
+		\clearpage
+	\fi
+% ===========================================================
+% فصل‌ها:
+	\setChapters
+	\input{./texFiles/chap1}
+	\input{./texFiles/chap2}
+	\input{./texFiles/chap3}
+	\input{./texFiles/chap4}
+	\input{./texFiles/chap5}
+	\input{./texFiles/chap6}
+	\input{./texFiles/chap7}
+% ===========================================================
+% فهرست منابع:
+	{\clearpage\setstretch{1.2}
+		\bibliography{./texFiles/References}
+	}
+% ===========================================================
+% پیوست‌ها:
+	\appendix
+	\input{./texFiles/app1}
+	\input{./texFiles/app2}
+% ===========================================================
+% واژه‌نامه‌ها:
+	\ifznuUseDicts
+		\printglossary
+	\fi
+% ===========================================================
+% چاپ نمایه:
+	\ifznuUseIndex
+		\setstretch{1.4}
+		\phantomsection\printindex
+	\fi
+% ===========================================================
+% چکیدهٔ انگلیسی:
+	\ifznuBscThesis\else
+		\setLatinAbstract
+		\input{./texFiles/abstractEn}
+% ===========================================================
+% چاپ صفحه عنوان انگلیسی:
+		\titleInfoEn
+	\fi
+% ===========================================================
+\end{document}

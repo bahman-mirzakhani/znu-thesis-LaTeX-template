@@ -1,0 +1,197 @@
+% !TeX root = ../thesis.tex
+% ===========================================================
+% بسته‌های ریاضی:
+\usepackage{mathtools} % amsmath
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mleftright}
+\RenewCommandCopy{\left}{\mleft}
+\RenewCommandCopy{\right}{\mright}
+% ===========================================================
+% عکس و مسیر عکس‌ها:
+\usepackage{graphicx}
+\graphicspath{{./pictures/}}
+\usepackage{subcaption}
+% ===========================================================
+% بسته‌ای برای واردکردن pdf:
+\usepackage{pdfpages}
+% ===========================================================
+% بسته‌ای برای تنظیمات کپشن‌ها:
+\usepackage{caption}
+\DeclareCaptionFont{mytwelve}{\fontsize{10.5}{12.5}\selectfont}
+\captionsetup{font=mytwelve, aboveskip=3pt, width=0.85\linewidth}
+\captionsetup[algorithm]{labelsep=colon, labelfont=md}
+% ===========================================================
+% تنظیم ارتفاع و فونت جدول‌ها:
+\usepackage{array}
+\makeatletter
+\newcommand*\my@starttable[1][]{%
+	\@float{table}[#1]\fontsize{11}{13.5}\selectfont
+	\renewcommand{\arraystretch}{1.75}%
+	\addtolength{\extrarowheight}{-2pt}%
+}
+\patchcmd{\table}{\@float{table}}{\my@starttable}{\PackageInfo{mysty}{Table environment patched successfully.}}{\PackageWarning{mysty}{Could not patch table environment.}}
+\makeatother
+% بسته‌های مرتبط با جدول:
+\usepackage{booktabs}
+\usepackage{multirow}
+% ===========================================================
+% بسته‌ای برای محیط کدها و رنگ‌ها:
+\usepackage{listings}
+\usepackage{xcolor}
+% بسته‌ای برای مدیریت ارجاع به منابع:
+\ifznuUseRefNum
+	\usepackage{cite}
+	\bibliographystyle{unsrt-fa}
+\else
+	\usepackage{natbib}
+	\bibliographystyle{chicago-fa}
+\fi
+% بسته‌ای برای جلوگیری از بیوه‌شدن!:
+\usepackage[defaultlines=2, all]{nowidow}
+% ===========================================================
+% بسته‌های لازم برای نوشتن الگوریتم:
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\numberwithin{algorithm}{chapter}
+% ===========================================================
+% بسته‌های فراخوانی‌شده:
+% alphalph, atbegshi, etoolbox, fancyhdr, geometry
+% multicol, newfloat, setspace, titlesec, tocbibind, tocloft
+% ===========================================================
+% بسته‌های جدید و مورد نیاز خود را اینجا فرابخوانید:
+
+% ===========================================================
+% بسته‌ای برای ایجاد نمایه (در صورت وجود):
+\ifznuUseIndex
+	\usepackage{makeidx}
+	\makeindex
+\fi
+% ===========================================================
+% هم‌راستاکردن منابعی که url دارند:
+\usepackage[hyphens]{url}
+\Urlmuskip=0mu plus 1mu
+\urlstyle{tt}
+% ===========================================================
+% امکان جهش به لینک‌ها:
+\makeatletter
+\ifznuFinal
+	\usepackage[hidelinks]{hyperref}
+\else
+	\usepackage[pagebackref]{hyperref}
+\fi
+\pretocmd{\titleInfoFa}{%
+	\hypersetup{%
+		pdfauthor=\@fullNameFa,%
+		pdftitle=\@titleFa,%
+		pdfsubject=\ifznuBscThesis پایان‌نامهٔ کارشناسی\else
+		\ifznuMscThesis پایان‌نامهٔ کارشناسی‌ارشد\else رسالهٔ دکتری\fi\fi
+	}
+}{}{}
+\makeatother
+% ===========================================================
+% بسته‌ای برای فهرست اختصارات و واژه‌نامه:
+\ifznuUseGlossaries
+	\usepackage[%
+		xindy,%
+		toc,%
+		acronym%
+	]{glossaries}
+	\makeatletter
+	\@ifpackagelater{glossaries}{2022/10/14}%
+		{\setacronymstyle{footnote}}{}
+	\makeatother
+\fi
+% ===========================================================
+% برای نوشتن فایل‌های بیشتر:
+\usepackage{morewrites}
+% ===========================================================
+% بستهٔ زی‌پرشین و فونت‌ها:
+\usepackage[%
+	perpagefootnote=on%
+]{xepersian}
+\settextfont[%
+	Path={./fonts/},%
+	Scale=1.25,%
+	ItalicFont={IRLotusICEE_Iranic.ttf},%
+	BoldFont={IRLotusICEE_Bold.ttf},%
+	BoldItalicFont={IRLotusICEE_BoldIranic.ttf},%
+]{IRLotusICEE.ttf}
+\ifznuDigitFa
+	\setmathdigitfont[%
+		Path={./fonts/},%
+		Scale=1.25,%
+		ItalicFont={IRLotusICEE_Iranic.ttf},%
+		BoldFont={IRLotusICEE_Bold.ttf},%
+		BoldItalicFont={IRLotusICEE_BoldIranic.ttf},%
+	]{IRLotusICEE.ttf}
+\fi
+\defpersianfont\titr[Path={./fonts/}, Scale=1.2]{XB Titre.ttf}
+\defpersianfont\nastaliq[Path={./fonts/}, Scale=2]{IranNastaliq.ttf}
+\defpersianfont\IRZar[Path={./fonts/}, Scale=1.1]{IRZarBold.ttf}
+\SepMark{-}
+% ===========================================================
+% دستورات لازم برای تعریف محیط‌های شبه‌قضیه:
+\theoremstyle{plain}
+\newtheorem{thm}{قضیه}[chapter]
+\newtheorem{lem}[thm]{لم}
+\newtheorem{prop}[thm]{گزاره}
+\newtheorem*{cor}{نتیجه}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{تعریف}
+\newtheorem{exmp}[thm]{مثال}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{تبصره}
+
+\AtBeginDocument{\renewcommand{\proofname}{برهان}}
+% ===========================================================
+% دستورهای لازم برای تعریف ترجمهٔ دستورات الگوریتم:
+% برگرفته از قالب دانشگاه تهران با کمی تغییرات
+\makeatletter
+\renewcommand{\algorithmicrequire}{\if@RTL\textbf{ورودی:}\else\textbf{Require:}\fi}
+\renewcommand{\algorithmicensure}{\if@RTL\textbf{خروجی:}\else\textbf{Ensure:}\fi}
+\renewcommand{\algorithmicend}{\if@RTL\textbf{پایانِ}\else\textbf{end}\fi}
+\renewcommand{\algorithmicif}{\if@RTL\textbf{اگر}\else\textbf{if}\fi}
+\renewcommand{\algorithmicthen}{\if@RTL\textbf{آنگاه}\else\textbf{then}\fi}
+\renewcommand{\algorithmicelse}{\if@RTL\textbf{وگرنه}\else\textbf{else}\fi}
+\renewcommand{\algorithmicfor}{\if@RTL\textbf{برای}\else\textbf{for}\fi}
+\renewcommand{\algorithmicforall}{\if@RTL\textbf{برای هر}\else\textbf{for all}\fi}
+\renewcommand{\algorithmicdo}{\if@RTL\textbf{انجام بده}\else\textbf{do}\fi}
+\renewcommand{\algorithmicwhile}{\if@RTL\textbf{تا زمانی که}\else\textbf{while}\fi}
+\renewcommand{\algorithmicloop}{\if@RTL\textbf{تکرار کن}\else\textbf{loop}\fi}
+\renewcommand{\algorithmicrepeat}{\if@RTL\textbf{تکرار کن}\else\textbf{repeat}\fi}
+\renewcommand{\algorithmicuntil}{\if@RTL\textbf{تا زمانی که}\else\textbf{until}\fi}
+\renewcommand{\algorithmicprint}{\if@RTL\textbf{چاپ کن}\else\textbf{print}\fi}
+\renewcommand{\algorithmicreturn}{\if@RTL\textbf{بازگردان}\else\textbf{return}\fi}
+\renewcommand{\algorithmicand}{\if@RTL\textbf{و}\else\textbf{and}\fi}
+\renewcommand{\algorithmicor}{\if@RTL\textbf{و یا}\else\textbf{or}\fi}
+\renewcommand{\algorithmicxor}{\if@RTL\textbf{یا}\else\textbf{xor}\fi}
+\renewcommand{\algorithmicnot}{\if@RTL\textbf{نقیض}\else\textbf{not}\fi}
+\renewcommand{\algorithmicto}{\if@RTL\textbf{تا}\else\textbf{to}\fi}
+\renewcommand{\algorithmicinputs}{\if@RTL\textbf{ورودی‌ها}\else\textbf{inputs}\fi}
+\renewcommand{\algorithmicoutputs}{\if@RTL\textbf{خروجی‌ها}\else\textbf{outputs}\fi}
+\renewcommand{\algorithmicglobals}{\if@RTL\textbf{متغیّرهای عمومی}\else\textbf{globals}\fi}
+\renewcommand{\algorithmicbody}{\if@RTL\textbf{انجام بده}\else\textbf{do}\fi}
+\renewcommand{\algorithmictrue}{\if@RTL\textbf{درست}\else\textbf{true}\fi}
+\renewcommand{\algorithmicfalse}{\if@RTL\textbf{نادرست}\else\textbf{false}\fi}
+\newcommand{\GOTO}[1]{\if@RTL\textbf{برو به}\else\textbf{go to}\fi~\ref{#1}}
+\makeatother
+% ===========================================================
+% تغییر نوع شماره‌گذاری الگوریتم‌ها:
+\makeatletter
+\renewcommand{\thealgorithm}{\thechapter\@SepMark\arabic{algorithm}}
+\makeatother
+% ===========================================================
+% دستورات لازم برای اختصارات و واژه‌نامه‌ها:
+\ifznuUseGlossaries
+	\input{./texFiles/glossarySettings}
+\fi
+% ===========================================================
+% تعریف برخی حروف ایستاده در محیط ریاضی:
+\newcommand{\diff}{\ensuremath{\,\mathrm d}}
+\newcommand{\I}{\ensuremath{\mathrm i}}
+\newcommand{\E}{\ensuremath{\mathrm e}}
+% ===========================================================

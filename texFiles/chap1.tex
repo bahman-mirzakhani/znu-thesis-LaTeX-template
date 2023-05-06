@@ -1,0 +1,654 @@
+% !TeX root = ../thesis.tex
+\chapter{نحوۀ کار با قالب}\label{chap:introduction} % مقدمه
+\section{پیش‌نیاز}
+لازم است که دانشجو، آشنایی کافی با
+\lr{\LaTeX}
+(اعم از نحوهٔ نصب توزیع
+\lr{\TeX}
+[آخرین نسخه و به‌روزشدهٔ
+\lr{\TeX\ Live}]،
+ویرایشگر و نحوهٔ کار با خود
+\lr{\LaTeX})
+را کسب کند.
+
+قبل از کار با قالب، یک بار توضیحات
+\autoref{chap:introduction}
+را مطالعه و یا در صورت نیاز، به توضیحات هر قسمت مراجعه کنید. همچنین یک سری
+کلیپ آموزشی برای هر قسمت از پایان‌نامه آماده گردیده است 
+که از لینک‌های ذیل قابل‌دریافت و مشاهده می‌باشند.
+\begin{itemize}
+	\item \href{https://www.aparat.com/Bahman_Mirzakhani/playlists}{آپارات}
+	\item\href{https://www.youtube.com/channel/UCzZoLZNsM9utoqycWoG7f5A/featured}{\lr{YouTube}}
+	\item
+	همچنین، آخرین نسخهٔ قالب، در
+	\href{https://github.com/bahman-mirzakhani/znu-thesis-LaTeX-template.git}{\lr{GitHub}}
+	قرار داده می‌شود.
+\end{itemize}
+
+لازم به ذکر است که توضیحات و کلیپ‌ها، نیاز شما به یادگیری لیتک را مرتفع نمی‌کنند!
+صرفاً توضیحاتی در خصوص کار با قالب هستند.
+
+\section{آپشن‌های کلاس نوشتار}
+\begin{itemize}
+	\item\lr{msc}:
+	دانشجویان دکتری می‌بایست این آپشن و یا
+	\lr{bsc}
+	را غیرفعال کنند.
+	\item\lr{bsc}:
+	دانشجویان کارشناسی، می‌بایست آپشن
+	\lr{msc}
+	را پاک کنند و
+	\lr{bsc}
+	بنویسند.
+	\item\lr{digitFa}:
+	با فعال‌نمودن این آپشن، اعداد در محیط ریاضی، فارسی حروف‌چینی خواهند شد.
+	\item\lr{idx}:
+	با فعال‌نمودن این آپشن، امکانِ ایجاد نمایه مهیا می‌شود.
+	\item\lr{acr}:
+	با فعال‌نمودن این آپشن، امکانِ ایجاد فهرست اختصارات مهیا می‌شود.
+	\item\lr{dict}:
+	با فعال‌نمودن این آپشن، امکانِ ایجاد واژه‌نامه مهیا می‌شود.
+	\item\lr{smbl}:
+	با فعال‌نمودن این آپشن، امکانِ ایجاد فهرست علائم مهیا می‌شود.
+	\item\lr{refNumber}:
+	با فعال نمودن این آپشن، امکان ارجاع‌دهی به‌صورت عددی مهیا می‌شود. در غیر این صورت
+	بایستی از روش نویسنده-سال استفاده کنید.
+	\item\lr{Final}:
+	با فعال‌نمودن این آپشن، دو صفحه به پایان‌نامه/رساله اضافه خواهد شد.
+	یک صفحه مربوط می‌شود به «صفحهٔ ارزیابی پایان‌نامه توسط هیئت داوران» و دیگری
+	«فرم دریافت پایان‌نامه برای ارسال به پژوهشگاه علوم و فناوری اطلاعات ایران».
+	اولی با نام
+	\verb|score.jpg|
+	و دومی با نام
+	\verb|pdfReceipt.pdf|
+	در پوشهٔ
+	\verb|pictures|
+	ذخیره شده‌اند. دانشجو می‌بایست فایل‌های مربوط به خود را، با همان نام‌ها در پوشهٔ
+	مذکور، جایگزین قبلی‌ها کند. پس تا زمانی که به این مرحله نرسیده‌اید، نیازی به فعال‌کردن
+	این آپشن نیست.
+\end{itemize}
+
+\section{اطلاعات پایان‌نامه}
+اطلاعات دانشجو، پایان‌نامه و اساتید در فایل
+\verb|Info.tex|
+در پوشهٔ
+\verb|texFiles|،
+وارد شده و به‌صورت خودکار در جای خود قرار می‌گیرند. پوشه‌هایی برای ذخیرهٔ انواع فایل‌ها
+در نظر گرفته شده است؛ فایل‌های جدید خود را در پوشهٔ مناسب خود ذخیره کنید.
+
+
+\begin{multicols}{2}[\section{فهرست‌ها}]
+	\begin{itemize}
+		\item
+		فهرست مطالب
+		(\verb|\tableofcontents|)
+		\item
+		فهرست جدول‌ها
+		(\verb|\listoftables|)
+		\item
+		فهرست شکل‌ها
+		(\verb|\listoffigures|)
+		\item
+		فهرست نمودارها
+		(\verb|\listofdiags|)
+		\item
+		فهرست الگوریتم‌ها \\
+		(\verb|\listofalgorithms|)
+		\item
+		فهرست کدها
+		(\verb|\listofcodes|)
+		\item
+		فهرست روابط ریاضی \\
+		(\verb|\listofmyequations|)
+		\item
+		فهرست اختصارات
+		(\verb|Acronyms.tex|)
+		\item
+		فهرست علائم
+		(\verb|Symbols.tex|)
+	\end{itemize}
+\end{multicols}
+
+\subsection{فهرست جدول‌ها و شکل‌ها}
+برای جدول‌ها از محیط
+\lr{table}
+\begin{latin}
+	\begin{verbatim}
+		\begin{table}[!htb]
+		    \centering
+		    \caption{}
+		    \label{}
+		    Draw your table.
+		\end{table}
+	\end{verbatim}
+\end{latin}\noindent
+و برای شکل‌ها از محیط
+\lr{figure}
+\begin{latin}
+	\begin{verbatim}
+		\begin{figure}[!htb]
+		    \centering
+		    Include your figure.
+		    \caption{}
+		    \label{}
+		\end{figure}
+	\end{verbatim}
+\end{latin}\noindent
+استفاده کنید
+(\autoref{tab:example}
+و
+\autoref{fig:example}).
+
+\begin{table}[!htb]
+	\centering
+	\caption{نمونه جدول}
+	\label{tab:example}
+	\begin{tabular}{ccc}
+		\hline
+		نام & نام‌خانوادگی & کدملی
+		\\\hline
+		اول & دوم & 1234567890
+		\\
+		سوم & چهارم & 0987654321
+		\\
+		پنجم & ششم & 5432106789
+		\\\hline
+	\end{tabular}
+\end{table}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.3\linewidth]{example-image-a}
+	\caption{نمونه شکل}
+	\label{fig:example}
+\end{figure}
+
+\subsection{فهرست نمودارها}
+برای نمودارها از محیط
+\lr{diag}،
+همانند محیط‌های جدول و شکل، استفاده کنید.
+\begin{latin}
+	\begin{verbatim}
+		\begin{diag}[!htb]
+		    \centering
+		    include your diagram.
+		    \caption{}
+		    \label{}
+		\end{diag}
+	\end{verbatim}
+\end{latin}
+
+\begin{diag}[!htb]
+	\centering
+	\includegraphics[width=.3\linewidth]{example-image-b}
+	\caption{نمونه نمودار}
+	\label{}
+\end{diag}
+
+\subsection{فهرست الگوریتم‌ها}
+می‌توانید الگوریتم‌های مورد نیاز خود را بنویسید و فهرست برای آن‌ها ایجاد کنید. به نمونه‌های برگرفته
+از قالب دانشگاه تهران دقت کنید. الگوریتم‌های
+\ref{alg:DLT}،
+\ref{alg:simulation-random}
+و
+\ref{alg:RANSAC}.
+
+\begin{algorithm}[!htb]
+	\caption{\lr{DLT} برای تخمین ماتریس هوموگرافی}
+	\label{alg:DLT}
+	\setstretch{1.3}
+	\begin{algorithmic}[1]
+		\REQUIRE $n\geq4$ زوج نقطهٔ متناظر در دو تصویر 
+		${\mathbf{x}_i\leftrightarrow\mathbf{x}'_i}$،\\
+		\ENSURE ماتریس هوموگرافی $H$ به نحوی‌که: 
+		$\mathbf{x}'_i = H \mathbf{x}_i$.
+		\STATE برای هر زوج نقطهٔ متناظر
+		$\mathbf{x}_i\leftrightarrow\mathbf{x}'_i$ 
+		ماتریس $\mathbf{A}_i$ را با استفاده از رابطه محاسبه کنید.
+		\STATE ماتریس‌های ۹ ستونی  $\mathbf{A}_i$ را در قالب یک ماتریس $\mathbf{A}$ ۹ ستونی ترکیب کنید. 
+		\STATE تجزیهٔ مقادیر منفرد \lr{(SVD)}  ماتریس $\mathbf{A}$ را بدست آورید. بردار واحد متناظر با کمترین مقدار منفرد جواب $\mathbf{h}$ خواهد بود.
+		\STATE  ماتریس هوموگرافی $H$ با تغییر شکل $\mathbf{h}$ حاصل خواهد شد.
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[!htb]
+	\caption{اجرای برنامهٔ شبیه‌سازی}
+	\label{alg:simulation-random}
+	\setstretch{1.3}
+	\begin{algorithmic}[1]
+		\REQUIRE زمان $t_{max}$ به عنوان زمان لازم برای انجام شبیه سازی،\\
+		\REQUIRE  گراف شبکه برای شبیه سازی،
+		\ENSURE جدول تغییرات گراف از لحظهٔ ۰ تا t.
+		\FOR {تمام لحظات در بازهٔ ۰ تا $t_{max}$}
+		\FOR {تمام پیوند‌ها}
+		\STATE محاسبهٔ ضریب و نرخ انتقال پیوند
+		\STATE محاسبهٔ کیفیت و نرخ یادگیری
+		\ENDFOR
+		\FOR {تمام گره‌ها}
+		\STATE محاسبهٔ نرخ انتقال گره
+		\STATE محاسبهٔ وضعیت جدید
+		\ENDFOR
+		\IF {تغییرات از مقدار $\delta$ کمتر است}
+		\STATE شکستن حلقه
+		\COMMENT{این شرط برای پایان قبل از رسیدن به محدودیت زمانی است، اگر تغییرات کمتر از $\delta$ باشد}
+		\ELSIF {زمان اجرای برنامه بیش از حد طول کشیده \AND $t>100$}
+		\STATE شکستن حلقه
+		\ENDIF
+		\ENDFOR
+		\PRINT {زمان اجرای برنامه}
+		\RETURN {ماتریس تغییرات زمانی}
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[!htb]
+	\caption{\lr{RANSAC} برای تخمین ماتریس هوموگرافی}
+	\label{alg:RANSAC}
+	\setstretch{1.3}
+	\begin{latin}
+		\begin{algorithmic}[1]
+			\REQUIRE $n\geq4$ putative correspondences, number of estimations, $N$, distance threshold $T_{dist}$.\\
+			\ENSURE Set of inliers and Homography matrix $H$.
+			\FOR{$k = 1$ to $N$}
+			\STATE Randomly choose 4 correspondence,
+			\STATE Check whether these points are colinear, if so, redo the above step
+			\STATE Compute the homography $H_{curr}$ by DLT algorithm from the 4 points pairs,
+			\STATE $\ldots$ % الگوریتم کامل نیست
+			\ENDFOR
+			\STATE Refinement: re-estimate H from all the inliers using the DLT algorithm.
+		\end{algorithmic}
+	\end{latin}
+\end{algorithm}
+
+\subsection{فهرست کدها}
+برای کدها از محیط
+\lr{code}،
+همانند محیط‌های جدول و شکل، استفاده کنید. رجوع کنید به
+\autoref{sec:codes}.
+\begin{latin}
+	\begin{verbatim}
+		\begin{code}[!htb]
+		    include your code.
+		    \caption{}
+		    \label{}
+		\end{code}
+	\end{verbatim}
+\end{latin}
+
+\subsection{فهرست روابط ریاضی}
+بعد از روابط ریاضی شماره‌دار، از دستور
+\LR{\verb|\myequation{Equation Name}|}
+استفاده می‌کنیم.
+\begin{latin}
+	\begin{verbatim}
+		\begin{equation}
+		    a^2 + b^2 = c^2
+		\end{equation}\myequation{Equation Name}
+	\end{verbatim}
+\end{latin}
+\begin{equation}
+	a^2 + b^2 = c^2
+\end{equation}\myequation{فیثاغورس}%
+
+\ifznuUseAcronyms
+\subsection{فهرست اختصارات}
+امکانِ استفاده از فهرست اختصارات، با فعال‌کردن آپشن
+\lr{acr}
+برای کلاس نوشتار، مهیا می‌شود. واژه‌هایی که قرار است به فهرست اختصارات وارد شوند،
+در فایل
+\verb|Acronyms.tex|،
+مطابق نمونه‌های موجود، تعریف خواهند شد.
+
+دستور
+\verb|\gls{label}|،
+جهت درج در متن و فهرست اختصارات، استفاده می‌شود؛ تا زمانی که با این دستور، واژه‌ها را وارد نکنید،
+نه در فهرست می‌آیند و نه در متن! برای مثال،
+\gls{acr:amp}
+می‌تواند از نوع
+\gls{acr:ac}
+باشد. در اولین استفاده از واژه، پاورقی نیز زده می‌شود و برای دفعات بعدی، بدون پاورقی می‌آید.
+دوباره از
+\gls{acr:ac}
+استفاده شد. حالت ستاره‌دار دستور
+\verb|\gls*{label}|،
+واژه را بدون پاورقی می‌آورد. برای مثال واژهٔ
+\gls*{acr:acond}
+اولین بار استفاده شد. بار دیگر بدون ستاره استفاده می‌کنیم:
+\gls{acr:acond}.
+دوباره از
+\gls{acr:acond}
+استفاده می‌کنیم.
+
+اگر از دستور
+\verb|\glsaddall|،
+قبل از
+\verb|\begin{document}|
+استفاده کنید، همهٔ واژه‌های تعریف‌شده در فایل
+\verb|Acronyms.tex|،
+وارد فهرست اختصارات خواهند شد.
+
+این قسمت نیاز به اجرای
+\lr{xindy}
+دارد. دستور مربوطه، در فایل
+\verb|execution.txt|
+داخل پوشهٔ
+\verb|texFiles|
+نوشته شده است. یک دستور جدید در ویرایشگر خود تعریف و استفاده کنید. ترتیب اجرا به این صورت است:
+\begin{latin}
+	\begin{verbatim}
+		xelatex
+		xindy (your new execution command)
+		xelatex
+	\end{verbatim}
+\end{latin}
+\fi
+
+\subsection{فهرست علائم}
+امکانِ استفاده از فهرست علائم، با فعال‌کردن آپشن
+\lr{smbl}
+برای کلاس نوشتار، مهیا می‌شود. واژه‌هایی که قرار است به فهرست علائم وارد شوند،
+در فایل
+\verb|Symbols.tex|،
+مطابق نمونه‌های موجود، تعریف خواهند شد.
+
+این فهرست به‌صورت دوستونه حروف‌چینی خواهد شد.
+
+\section{کدهای برنامه‌نویسی}\label{sec:codes}
+می‌توانید کدهای
+\lr{MATLAB}،
+\lr{Python}،
+\lr{GAMS}
+و
+\lr{R}
+را به‌زیبایی وارد کنید.
+اگر تعداد خطوط کدها کمتر از یک صفحه باشد، فرمت استفاده از کدها به‌صورت ذیل است.
+\begin{latin}
+\begin{verbatim}
+	\begin{code}[!htb]
+	    \lstinputlisting[style=styleName]{fileName.fileExtension}
+	    \caption{}
+	    \label{}
+	\end{code}
+\end{verbatim}
+\end{latin}\noindent
+استایل‌های قابل‌استفاده عبارتند از:
+\begin{itemize}
+	\begin{latinitems}
+		\item MATLABshort
+		\item PythonShort
+		\item Rshort
+		\item GAMSshort
+	\end{latinitems}
+\end{itemize}
+برای مثال
+\autoref{mat:example}.
+
+اگر کدها بیشتر از یک صفحه باشند، بایستی در قسمت پیوست آورده شوند (رجوع کنید به
+\autoref{app:codes}).
+فرمت و استایل‌های قابل‌استفاده در قسمت پیوست:
+\begin{latin}
+	\begin{verbatim}
+		\lstinputlisting[style=styleName]{fileName.fileExtension}
+	\end{verbatim}
+\end{latin}
+\begin{itemize}
+	\begin{latinitems}
+		\item MATLABlong
+		\item PythonLong
+		\item Rlong
+		\item GAMSlong
+	\end{latinitems}
+\end{itemize}
+
+
+\begin{code}[!htb]
+	\lstinputlisting[style=MATLABshort]{MATLABshort.m}
+	\caption{نمونه کد
+		\lr{MATLAB}}
+	\label{mat:example}
+\end{code}
+
+
+\begin{multicols}{2}[\section{شبه‌قضیه‌های ریاضی}]
+	\begin{itemize}
+		\item
+		قضیه
+		(\lr{thm})
+		\item
+		لم
+		(\lr{lem})
+		\item
+		گزاره
+		(\lr{prop})
+		\item
+		نتیجه
+		(\lr{cor})
+		\item
+		تعریف
+		(\lr{defn})
+		\item
+		مثال
+		(\lr{exmp})
+		\item
+		تبصره
+		(\lr{rem})
+		\item
+		برهان
+		(\lr{proof})
+	\end{itemize}
+\end{multicols}
+شبه‌قضیه‌ها پشت‌سرهم و بر اساس شمارهٔ فصل شماره‌گذاری خواهند شد. «نتیجه»، «تبصره»
+و «برهان» بدون شماره هستند.
+
+\begin{thm}
+	متن قضیه اینجا نوشته می‌شود.
+\end{thm}
+
+\begin{thm}[اسم قضیه]
+متن قضیه اینجا نوشته می‌شود.
+\end{thm}
+
+\begin{lem}
+متن لم اینجا نوشته می‌شود.
+\end{lem}
+
+\begin{prop}
+متن گزاره اینجا نوشته می‌شود.
+\end{prop}
+
+\begin{cor}
+متن نتیجه اینجا نوشته می‌شود.
+\end{cor}
+
+\begin{defn}
+متن تعریف اینجا نوشته می‌شود.
+\end{defn}
+
+\begin{exmp}
+متن مثال اینجا نوشته می‌شود.
+\end{exmp}
+
+\begin{rem}
+متن تبصره اینجا نوشته می‌شود.
+\end{rem}
+
+\begin{proof}
+متن برهان اینجا نوشته می‌شود.
+\end{proof}
+
+\ifznuUseDicts
+\section{واژه‌نامه}
+\begin{itemize}
+	\item
+	واژه‌نامهٔ فارسی به انگلیسی
+	\item
+	واژه‌نامهٔ انگلیسی به فارسی
+\end{itemize}
+
+امکانِ استفاده از واژه‌نامه‌ها، با فعال‌کردن آپشن
+\lr{dict}
+برای کلاس نوشتار، مهیا می‌شود. واژه‌هایی که قرار است به واژه‌نامه‌ها وارد شوند،
+در فایل
+\verb|Dicts.tex|،
+مطابق نمونه‌های موجود، تعریف خواهند شد.
+
+دستور
+\verb|\gls{label}|،
+جهت درج واژه (حالت مفرد) و دستور
+\verb|\glspl{label}|،
+جهت درج واژه (حالت جمع) در متن، و واژه‌نامه‌ها استفاده می‌شوند؛ تا زمانی که با این دستور، واژه‌ها را وارد نکنید،
+نه در واژه‌نامه می‌آیند و نه در متن! (در واژه‌نامه، فقط حالت مفرد درج خواهد شد). برای
+\gls{dict:exam}
+و مثال دیگر از
+\glspl{dict:test}.
+در اولین استفاده از واژه، پاورقی نیز زده می‌شود و برای دفعات بعدی، بدون پاورقی می‌آید. بار دیگر از
+\gls{dict:test}
+استفاده شد.
+حالت ستاره‌دار دستور
+\verb|\gls*{label}|
+یا
+\verb|\glspl*{label}|
+واژه را بدون پاورقی می‌آورد. برای مثال واژهٔ
+\glspl*{dict:smpl}
+اولین بار استفاده شد. بار دیگر بدون ستاره استفاده می‌کنیم:
+\gls{dict:smpl}.
+دوباره از
+\gls{dict:smpl}
+استفاده می‌کنیم.
+
+اگر از دستور
+\verb|\glsaddall|،
+قبل از
+\verb|\begin{document}|
+استفاده کنید، همهٔ واژه‌های تعریف‌شده در فایل
+\verb|Dicts.tex|،
+وارد واژه‌نامه‌ها خواهند شد.
+
+این قسمت نیاز به اجرای
+\lr{xindy}
+دارد. دستور مربوطه، در فایل
+\verb|execution.txt|
+داخل پوشهٔ
+\verb|texFiles|
+نوشته شده است. یک دستور جدید در ویرایشگر خود تعریف و استفاده کنید. ترتیب اجرا به این صورت است:
+\begin{latin}
+	\begin{verbatim}
+		xelatex
+		xindy (your new execution command)
+		xelatex
+	\end{verbatim}
+\end{latin}
+\fi
+
+\ifznuUseIndex
+\section{نمایه}
+امکانِ استفاده از نمایه، با فعال‌کردن آپشن
+\lr{idx}
+برای کلاس نوشتار، مهیا می‌شود. با دستور
+\verb|\index{word}|
+ واژه‌ها به نمایه منتقل می‌شوند. دقت کنید که دستور، بلافاصله پس از واژه نوشته شود.
+ \begin{latin}\noindent
+ 	\verb|word\index{word}|
+ \end{latin}
+برای مثال%
+\index{مثال}،
+برای آزمایش%
+\index{آزمایش}،
+نتایج آزمایش%
+\index{آزمایش!نتایج}،
+دلتا%
+\index{دلتا@$ \delta $}
+(به کد و خروجی نمایه دقت کنید. از کاراکتر ! برای ایجاد مدخل (حداکثر تا سه لایه) و از
+کاراکتر @ برای جایگزینی کلمه در نمایه استفاده شده است).
+
+این قسمت نیاز به اجرای
+\lr{xindy}
+دارد. دستور مربوطه، در فایل
+\verb|execution.txt|
+داخل پوشهٔ
+\verb|texFiles|
+نوشته شده است. یک دستور جدید در ویرایشگر خود تعریف و استفاده کنید. ترتیب اجرا به این صورت است:
+\begin{latin}
+	\begin{verbatim}
+		xelatex
+		xindy (your new execution command)
+		xelatex
+	\end{verbatim}
+\end{latin}
+\fi
+
+\section{منابع}
+منابع به‌کمک
+\lr{\textsc{Bib}\TeX}
+ایجاد و در فایل
+\verb|References.bib|
+در پوشهٔ
+\verb|texFiles|
+ذخیره می‌شوند. برای منابع فارسی، بایستی مدخلِ
+\begin{latin*}
+	\verb|language = {persian},|
+\end{latin*}
+نیز اضافه گردد.
+
+\subsection{روش عددی}
+در این روش، بایستی آپشن
+\lr{refNumber}
+برای کلاس نوشتار، فعال شده باشد و برای ارجاع‌دهی، از دستور
+\verb|\cite{label}|
+استفاده می‌شود. برای مثال، ارجاع به مراجع
+\cite{abtahi1388latex}،
+\cite{oommen2002}
+و
+\cite{knuth1984texbook}
+به تنهایی و همچنین با هم:
+\cite{abtahi1388latex,oommen2002,knuth1984texbook}.
+در روش عددی، نیازی به مدخلِ
+\texttt{authorfa}
+نیست و می‌توانید ننویسید.
+
+این قسمت نیاز به اجرای
+\lr{\textsc{Bib}\TeX}
+دارد که ترتیب اجرا به این صورت است:
+\begin{latin}
+	\begin{verbatim}
+		xelatex
+		bibtex
+		xelatex
+		xelatex
+	\end{verbatim}
+\end{latin}
+
+\subsection{روش نویسنده-سال}
+در این روش، بایستی آپشن
+\lr{refNumber}
+برای کلاس نوشتار، غیرفعال شده باشد و برای منابع لاتین، اسم فارسی نویسندگان را در مدخلِ
+\begin{latin*}
+	\verb|authorfa = {Family, Name and Family, Name},|
+\end{latin*}
+وارد کنید. دقت کنید که دقیقاً با فرمت ذکرشده وارد شوند. به فایل
+\verb|References.bib|
+مراجعه کنید.
+
+برای ارجاع در وسط جمله، از دستور
+\verb|\citet{label}|
+و در انتهای جمله، از دستور
+\verb|\citep{label}|
+استفاده می‌شود. اگر قصد نوشتن اسامی نویسندگان خارجی را در پاورقی دارید،
+بعد از ارجاع، از دستور پاورقی استفاده کنید؛ یعنی:
+\begin{latin}\noindent
+	\verb|\citet{label}\LTRfootnote{\citeauthor*{label}}|
+\end{latin}
+
+این قسمت نیاز به اجرای
+\lr{\textsc{Bib}\TeX8}
+دارد. دستور مربوطه، در فایل
+\verb|execution.txt|
+داخل پوشهٔ
+\verb|texFiles|
+نوشته شده است. یک دستور جدید در ویرایشگر خود تعریف و استفاده کنید. ترتیب اجرا به این صورت است:
+\begin{latin}
+	\begin{verbatim}
+		xelatex
+		bibtex8 -W -c cp1256fa
+		xelatex
+		xelatex
+	\end{verbatim}
+\end{latin}
