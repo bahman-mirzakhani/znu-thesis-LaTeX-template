@@ -1,10 +1,10 @@
 % !TeX root = ../thesis.tex
 % E-mail: bmirzakhani.en@gmail.com
-% v1.8b (Release Woman, Life, Freedom)
+% v1.9 (Release name: Mohaddeseh Bakhtiyari)
 % ===========================================================
 \NeedsTeXFormat{LaTeX2e}
-\def\znuThesis@releaseName{Woman, Life, Freedom}
-\def\znuThesis@persian@releaseName{زن، زندگی، آزادی}
+\def\znuThesis@releaseName{Mohaddeseh Bakhtiyari}
+\def\znuThesis@persian@releaseName{محدّثه بختیاری}
 \newcommand*{\znuThesisRname}{%
 	\if@RTL
 		\znuThesis@persian@releaseName
@@ -12,7 +12,7 @@
 		\znuThesis@releaseName
 	\fi
 }
-\ProvidesClass{znuThesis}[2022/11/03 v1.8b (Release \znuThesis@releaseName) ZNU Thesis]
+\ProvidesClass{znuThesis}[2023/05/06 v1.9 (Release name: \znuThesis@releaseName) ZNU Thesis]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
 \LoadClass[12pt,a4paper]{report}
@@ -63,7 +63,7 @@
 \setlength{\headheight}{22pt}
 \fancypagestyle{refpage}{%
 	\fancyhf{}
-	\fancyhead[L]{\small\nouppercase{\leftmark}}
+	\fancyhead[R]{\small\nouppercase{\leftmark}}
 	\fancyfoot[C]{\small\thepage}
 }
 % ===========================================================
@@ -225,7 +225,7 @@
 	\settowidth{\chaplen}{\chaptername~\cftchapaftersnum}
 	\addtolength{\cftchapnumwidth}{\chaplen}
 % پیوست:
-	\newcommand{\setupname}[1]{%
+	\newcommand{\setupchapname}[1]{%
 		\addtocontents{toc}{%
 			\unexpanded{\unexpanded{%
 					\renewcommand{\cftchappresnum}{#1\ }%
@@ -239,58 +239,157 @@
 			\unexpanded{\unexpanded{%
 					\setlength{\cftsecnumwidth}{\widthof{الف-9-1}}%
 			}}%
-		}
+		}%
 		\addtocontents{toc}{%
 			\unexpanded{\unexpanded{%
 					\setlength{\cftsubsecnumwidth}{\widthof{الف-9-9-}}%
 			}}%
-		}
+		}%
 		\addtocontents{toc}{%
 			\unexpanded{\unexpanded{%
 					\setlength{\cftsubsubsecnumwidth}{\widthof{الف-9-9-9-}}%
 			}}%
-		}
-		\setupname{\appendixname}
+		}%
+		\setupchapname{\appendixname}%
+% تنظیم عرض شماره‌های الگوریتم در لیست مربوطه (برای پیوست):
+		\addtocontents{loa}{%
+			\protect\renewcommand{\protect\l@algorithm}%
+			{\protect\@dottedtocline{1}{0em}{3em}}}%
 	}{}{}
 % شکل:
+	\edef\fixedfignumwidth{\the\cftfignumwidth}
 	\renewcommand{\figurename}{شکل}
 	\renewcommand{\cftfigpresnum}{\figurename~}
 	\renewcommand{\cftfigaftersnum}{:}
 	\newlength{\figlen}
 	\settowidth{\figlen}{\cftfigpresnum\cftfigaftersnum}
 	\addtolength{\cftfignumwidth}{\figlen}
+
+	\newcommand{\setupfigname}[1]{%
+		\addtocontents{lof}{%
+			\unexpanded{\unexpanded{%
+					\renewcommand{\cftfigpresnum}{#1\ }%
+					\setlength{\cftfignumwidth}{\widthof{\bfseries #1\ }}%
+					\addtolength{\cftfignumwidth}{\dimexpr\fixedfignumwidth+.8em}%
+			}}%
+		}%
+	}
+	\apptocmd{\appendix}{%
+		\addtocontents{lof}{%
+			\unexpanded{\unexpanded{%
+					\setlength{\cftfignumwidth}{\widthof{الف-9-}}%
+			}}%
+		}%
+		\setupfigname{\figurename}%
+	}{}{}
 % جدول:
+	\edef\fixedtabnumwidth{\the\cfttabnumwidth}
 	\renewcommand{\tablename}{جدول}
 	\renewcommand{\cfttabpresnum}{\tablename~}
 	\renewcommand{\cfttabaftersnum}{:}
 	\newlength{\tablen}
 	\settowidth{\tablen}{\cfttabpresnum\cfttabaftersnum}
 	\addtolength{\cfttabnumwidth}{\tablen}
+
+	\newcommand{\setuptabname}[1]{%
+		\addtocontents{lot}{%
+			\unexpanded{\unexpanded{%
+					\renewcommand{\cfttabpresnum}{#1\ }%
+					\setlength{\cfttabnumwidth}{\widthof{\bfseries #1\ }}%
+					\addtolength{\cfttabnumwidth}{\dimexpr\fixedtabnumwidth+.8em}%
+			}}%
+		}%
+	}
+	\apptocmd{\appendix}{%
+		\addtocontents{lot}{%
+			\unexpanded{\unexpanded{%
+					\setlength{\cfttabnumwidth}{\widthof{الف-9-}}%
+			}}%
+		}%
+		\setuptabname{\tablename}%
+	}{}{}
 % روابط ریاضی:
+	\edef\fixedequnumwidth{\the\cftmyequationsnumwidth}
 	\renewcommand{\cftmyequationspresnum}{رابطهٔ~}
 	\renewcommand{\cftmyequationsaftersnum}{:}
 	\newlength{\equlen}
 	\settowidth{\equlen}{\cftmyequationspresnum\cftmyequationsaftersnum}
 	\addtolength{\cftmyequationsnumwidth}{\dimexpr\equlen+.5em}
+
+	\newcommand{\setupequname}[1]{%
+		\addtocontents{equ}{%
+			\unexpanded{\unexpanded{%
+					\renewcommand{\cftmyequationspresnum}{#1\ }%
+					\setlength{\cftmyequationsnumwidth}{\widthof{\bfseries #1\ }}%
+					\addtolength{\cftmyequationsnumwidth}{\dimexpr\fixedequnumwidth+1.2em}%
+			}}%
+		}%
+	}
+	\apptocmd{\appendix}{%
+		\addtocontents{equ}{%
+			\unexpanded{\unexpanded{%
+					\setlength{\cftmyequationsnumwidth}{\widthof{الف-9-}}%
+			}}%
+		}%
+		\setupequname{رابطهٔ}%
+	}{}{}
 % کد:
+	\edef\fixedcodenumwidth{\the\cftcodenumwidth}
 	\renewcommand{\codename}{کد}
 	\renewcommand{\cftcodepresnum}{\codename~}
 	\renewcommand{\cftcodeaftersnum}{:}
 	\newlength{\codelen}
 	\settowidth{\codelen}{\cftcodepresnum\cftcodeaftersnum}
 	\addtolength{\cftcodenumwidth}{\dimexpr\codelen+.5em}
+
+	\newcommand{\setupcodename}[1]{%
+		\addtocontents{loc}{%
+			\unexpanded{\unexpanded{%
+					\renewcommand{\cftcodepresnum}{#1\ }%
+					\setlength{\cftcodenumwidth}{\widthof{\bfseries #1\ }}%
+					\addtolength{\cftcodenumwidth}{\dimexpr\fixedcodenumwidth+1.2em}%
+			}}%
+		}%
+	}
+	\apptocmd{\appendix}{%
+		\addtocontents{loc}{%
+			\unexpanded{\unexpanded{%
+					\setlength{\cftcodenumwidth}{\widthof{الف-9-}}%
+			}}%
+		}%
+		\setupcodename{\codename}%
+	}{}{}
 % نمودار:
+	\edef\fixeddiagnumwidth{\the\cftdiagnumwidth}
 	\renewcommand{\diagname}{نمودار}
 	\renewcommand{\cftdiagpresnum}{\diagname~}
 	\renewcommand{\cftdiagaftersnum}{:}
 	\newlength{\diaglen}
 	\settowidth{\diaglen}{\cftdiagpresnum\cftdiagaftersnum}
 	\addtolength{\cftdiagnumwidth}{\dimexpr\diaglen+.5em}
+
+	\newcommand{\setupdiagname}[1]{%
+		\addtocontents{lod}{%
+			\unexpanded{\unexpanded{%
+					\renewcommand{\cftdiagpresnum}{#1\ }%
+					\setlength{\cftdiagnumwidth}{\widthof{\bfseries #1\ }}%
+					\addtolength{\cftdiagnumwidth}{\dimexpr\fixeddiagnumwidth+1.2em}%
+			}}%
+		}%
+	}
+	\apptocmd{\appendix}{%
+		\addtocontents{lod}{%
+			\unexpanded{\unexpanded{%
+					\setlength{\cftdiagnumwidth}{\widthof{الف-9-}}%
+			}}%
+		}%
+		\setupdiagname{\diagname}%
+	}{}{}
 % الگوریتم:
 	\NewCommandCopy{\oldlistofalgorithms}{\listofalgorithms}
 	\renewcommand{\listofalgorithms}{%
 		\begingroup
-		\NewCommandCopy{\oldnumberline}{\numberline}
+		\NewCommandCopy{\oldnumberline}{\numberline}%
 		\renewcommand{\numberline}[1]{الگوریتم~\oldnumberline{##1:}}%
 		\oldlistofalgorithms
 		\endgroup}
@@ -309,16 +408,6 @@
 		\textbf{صفحه}\newline\rule{\linewidth}{0.4pt}\par}
 	\addtocontents{loa}{\textbf{عنوان} \hfill{}
 		\textbf{صفحه}\newline\rule{\linewidth}{0.4pt}\par}
-}
-% ===========================================================
-% حذف شماره صفحه از اول فصل‌ها:
-\AfterPreamble{%
-	\renewcommand{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi
-		\thispagestyle{empty}% original style: plain
-		\global\@topnum\z@
-		\@afterindentfalse
-		\secdef\@chapter\@schapter
-	}
 }
 % ===========================================================
 % بسته‌ای برای تنظیم فاصلهٔ خطوط:
@@ -756,13 +845,13 @@
 \AtBeginDocument{%
 	\chngNames
 	\addtocontents{toc}{\protect\markboth{}{\contentsname}%
-		\protect\thispagestyle{empty}}
+		\protect\thispagestyle{plain}}
 	\addtocontents{lot}{\protect\markboth{}{\listtablename}%
-		\protect\thispagestyle{empty}}
+		\protect\thispagestyle{plain}}
 	\addtocontents{lof}{\protect\markboth{}{\listfigurename}%
-		\protect\thispagestyle{empty}}
+		\protect\thispagestyle{plain}}
 	\addtocontents{equ}{\protect\markboth{}{\listequationsname}%
-		\protect\thispagestyle{empty}}
+		\protect\thispagestyle{plain}}
 	\ifznuUseGlossaries
 		\renewcommand{\glossarysection}[2][\theglstoctitle]{%
 			\def\theglstoctitle{#2}%
@@ -773,17 +862,17 @@
 		}%
 	\fi
 	\addtocontents{loc}{\protect\markboth{}{\listcodename}%
-		\protect\thispagestyle{empty}}
+		\protect\thispagestyle{plain}}
 	\addtocontents{lod}{\protect\markboth{}{\listdiagname}%
-		\protect\thispagestyle{empty}}
+		\protect\thispagestyle{plain}}
 	\addtocontents{loa}{\protect\markboth{}{\listalgorithmname}%
-		\protect\thispagestyle{empty}}
+		\protect\thispagestyle{plain}}
 }
 \pretocmd{\bibliography}{%
 	\pagestyle{refpage}%
 }{}{}
 \apptocmd{\bibliography}{%
-	\markboth{}{\bibname}%
+	\markboth{\bibname}{}%
 }{}{}
 % ===========================================================
 % تبدیل حروف فارسی:
@@ -863,20 +952,27 @@
 % برخی تنظیمات فاصله خطوط و استایل صفحه:
 \newcommand{\setTOC}{%
 	\restoregeometry
-	\pagenumbering{abjad}
-	\renewcommand{\thepage}{\abjadMult{\value{page}}}
-	\pagestyle{fancy}
+	\pagenumbering{abjad}%
+	\renewcommand{\thepage}{\abjadMult{\value{page}}}%
+	\pagestyle{fancy}%
 	\chngNames
 }
 % ===========================================================
-\newcommand{\setChapters}{%5
-	\setstretch{1.8}
-	\pagenumbering{arabic}
+\newcommand{\setChapters}{%
+	\setstretch{1.8}%
+	\pagenumbering{arabic}%
+% حذف شماره صفحه از اول فصل‌ها:
+	\renewcommand{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi
+		\thispagestyle{empty}% original style: plain
+		\global\@topnum\z@
+		\@afterindentfalse
+		\secdef\@chapter\@schapter
+	}%
 }
 % ===========================================================
 
 \newcommand{\setLatinAbstract}{%
 	\clearpage
-	\setstretch{1}
-	\pagestyle{empty}
+	\setstretch{1}%
+	\pagestyle{empty}%
 }
